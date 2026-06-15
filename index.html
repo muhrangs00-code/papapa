@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dya Decoration – Wedding & Lamaran Terjangkau se-Jabodebek</title>
+  <meta name="description" content="Paket wedding & lamaran terlengkap dan terjangkau se-Jabodebek. Sejak 2019 melayani ribuan calon pengantin dengan penuh cinta. Mulai Rp 5 Juta.">
+
+  <!-- ① Tailwind CDN – must load BEFORE the config script below -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ② Tailwind custom token system (sage / gold / ivory palette) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sage: {
+              50:  '#f0f5f1',
+              100: '#d8ead9',
+              200: '#b3d4b5',
+              300: '#82b985',
+              400: '#4A7C59',
+              500: '#3a6547',
+              600: '#2d5038',
+              700: '#2C3E2D',
+            },
+            gold: {
+              100: '#f5ecd0',
+              200: '#e8d5a3',
+              300: '#D4AF6F',
+              400: '#c49a4f',
+              500: '#a8803a',
+            },
+            ivory: {
+              50:  '#FDFAF7',
+              100: '#F5F0EB',
+              200: '#E8DDD0',
+            }
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'serif'],
+            body:    ['"Lato"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- ③ Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- ④ Custom CSS – only things Tailwind utilities can't handle -->
+  <style>
+    /* Base font */
+    body { font-family: 'Lato', sans-serif; }
+    .font-display { font-family: 'Cormorant Garamond', serif; }
+
+    html { scroll-behavior: smooth; }
+
+    /* ── NAV scroll state ── */
+    #navbar { transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease; }
+    #navbar.scrolled {
+      background: rgba(255,255,255,0.97) !important;
+      box-shadow: 0 1px 24px rgba(0,0,0,0.09);
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    #navbar.scrolled .nav-text { color: #2d5038; }
+    #navbar.scrolled .nav-logo-main { color: #2C3E2D; }
+    #navbar.scrolled .nav-cta-btn {
+      background: #D4AF6F;
+      color: #2C3E2D;
+    }
+
+    /* ── Hero gradient ── */
+    .hero-bg {
+      background: linear-gradient(140deg, #1e3020 0%, #2C3E2D 40%, #4A7C59 100%);
+    }
+
+    /* ── Package card selected state ── */
+    .pkg-card { border: 2px solid transparent; transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; }
+    .pkg-card:hover  { border-color: #82b985; box-shadow: 0 4px 18px rgba(74,124,89,0.12); }
+    .pkg-card.chosen { border-color: #4A7C59; background: #f0f5f1; }
+
+    /* ── Estimate card gold-pulse on update ── */
+    @keyframes goldPulse {
+      0%   { box-shadow: 0 0 0 0   rgba(212,175,111,0.45); border-color: #D4AF6F; }
+      70%  { box-shadow: 0 0 0 14px rgba(212,175,111,0);   border-color: #D4AF6F; }
+      100% { box-shadow: 0 0 0 0   rgba(212,175,111,0);    border-color: transparent; }
+    }
+    #estimate-card { border: 2px solid transparent; transition: border-color 0.3s; }
+    #estimate-card.pulsing { animation: goldPulse 0.7s ease-out forwards; }
+
+    /* ── Filter button active ── */
+    .filter-btn { transition: background 0.2s, color 0.2s, border-color 0.2s; }
+    .filter-btn.active { background: #4A7C59; color: #fff; border-color: #4A7C59; }
+
+    /* ── Portfolio item ── */
+    .port-item { transition: opacity 0.35s ease, transform 0.35s ease; }
+    .port-item.hidden-item { display: none; }
+    .port-thumb { transition: transform 0.5s ease; }
+    .port-item:hover .port-thumb { transform: scale(1.06); }
+
+    /* ── Testimonial hover ── */
+    .testi-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .testi-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(44,62,45,0.13); }
+
+    /* ── Scroll-reveal ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── WhatsApp float button pulse ring ── */
+    @keyframes waPulse {
+      0%   { box-shadow: 0 0 0 0   rgba(37,211,102,0.5); }
+      70%  { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0   rgba(37,211,102,0); }
+    }
+    #wa-float { animation: waPulse 2.2s infinite; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #F5F0EB; }
+    ::-webkit-scrollbar-thumb { background: #4A7C59; border-radius: 4px; }
+
+    /* Date input color on dark bg */
+    .date-dark { color-scheme: dark; }
+
+    /* Number input spinner hide */
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type=number] { -moz-appearance: textfield; }
+  </style>
+</head>
+
+<body class="bg-ivory-50 text-sage-700 antialiased">
+
+<!-- ╔══════════════════════════════════════════════════════╗
+     ║  STICKY NAVIGATION                                   ║
+     ╚══════════════════════════════════════════════════════╝ -->
+<nav id="navbar" class="fixed top-0 inset-x-0 z-50 py-4">
+  <div class="max-w-6xl mx-auto px-5 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5">
+      <!-- Botanical icon mark -->
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <circle cx="17" cy="17" r="17" fill="#D4AF6F" fill-opacity="0.18"/>
+        <path d="M17 6 Q13 11 13 16 Q13 21 17 24 Q21 21 21 16 Q21 11 17 6Z" fill="#D4AF6F"/>
+        <path d="M17 16 Q11 14 9 10 Q13 7 17 10 Z" fill="#4A7C59"/>
+        <path d="M17 16 Q23 14 25 10 Q21 7 17 10 Z" fill="#4A7C59"/>
+      </svg>
+      <div class="leading-none">
+        <span class="nav-logo-main font-display text-xl font-semibold text-white tracking-wide">dya.decoration</span>
+        <span class="block text-[10px] text-gold-300 tracking-[0.2em] uppercase mt-0.5">wedding organizer</span>
+      </div>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-7">
+      <a href="#paket"        class="nav-text text-white/90 hover:text-gold-300 text-sm tracking-wide transition-colors">Paket & Harga</a>
+      <a href="#portofolio"   class="nav-text text-white/90 hover:text-gold-300 text-sm tracking-wide transition-colors">Portofolio</a>
+      <a href="#ketersediaan" class="nav-text text-white/90 hover:text-gold-300 text-sm tracking-wide transition-colors">Cek Tanggal</a>
+      <a href="#testimoni"    class="nav-text text-white/90 hover:text-gold-300 text-sm tracking-wide transition-colors">Testimoni</a>
+      <a href="#konsultasi"
+         class="nav-cta-btn ml-2 bg-gold-300 text-sage-700 hover:bg-gold-400 font-bold px-6 py-2.5 rounded-full text-sm transition-all hover:shadow-lg hover:-translate-y-0.5">
+        Konsultasi Gratis
+      </a>
+    </div>
+
+    <!-- Hamburger -->
+    <button id="ham-btn" class="md:hidden text-white p-1" aria-label="Menu">
+      <svg id="ham-open"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6"  x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg id="ham-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div id="mobile-nav" class="md:hidden hidden bg-white/97 backdrop-blur border-t border-ivory-200 shadow-lg">
+    <div class="flex flex-col px-6 py-5 gap-4 text-sage-700">
+      <a href="#paket"        onclick="closeNav()" class="py-1 border-b border-ivory-200 text-sm font-semibold">Paket & Harga</a>
+      <a href="#portofolio"   onclick="closeNav()" class="py-1 border-b border-ivory-200 text-sm font-semibold">Portofolio</a>
+      <a href="#ketersediaan" onclick="closeNav()" class="py-1 border-b border-ivory-200 text-sm font-semibold">Cek Tanggal</a>
+      <a href="#testimoni"    onclick="closeNav()" class="py-1 border-b border-ivory-200 text-sm font-semibold">Testimoni</a>
+      <a href="#konsultasi"   onclick="closeNav()" class="bg-gold-300 text-sage-700 text-center py-3 rounded-xl font-bold text-sm">Konsultasi Gratis</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ╔══════════════════════════════════════════════════════╗
+     ║  SECTION 1 – HERO                                    ║
+     ╚══════════════════════════════════════════════════════╝ -->
+<section class="hero-bg min-h-screen flex items-center relative overflow-hidden">
+
+  <!-- Ambient glow orbs -->
+  <div class="absolute -top-32 -right-32 w-[500px] h-[500px] bg-gold-300/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -bottom-32 -left-32 w-[400px] h-[400px] bg-sage-300/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <!-- Botanical SVG – left -->
+  <div class="absolute left-4 top-1/3 opacity-15 hidden xl:block pointer-events-none">
+    <svg width="90" height="180" viewBox="0 0 90 180" fill="none">
+      <path d="M45 170 Q25 130 10 90 Q30 70 45 90 Q60 70 80 90 Q65 130 45 170Z" fill="#D4AF6F"/>
+      <line x1="45" y1="170" x2="45" y2="10" stroke="#D4AF6F" stroke-width="1.5"/>
+      <path d="M45 120 Q20 100 5 60 Q28 48 45 62Z" fill="#D4AF6F" opacity=".5"/>
+      <path d="M45 120 Q70 100 85 60 Q62 48 45 62Z" fill="#D4AF6F" opacity=".5"/>
+    </svg>
+  </div>
+  <!-- Botanical SVG – right (mirrored) -->
+  <div class="absolute right-4 top-1/3 opacity-15 hidden xl:block rotate-180 pointer-events-none">
+    <svg width="90" height="180" viewBox="0 0 90 180" fill="none">
+      <path d="M45 170 Q25 130 10 90 Q30 70 45 90 Q60 70 80 90 Q65 130 45 170Z" fill="#D4AF6F"/>
+      <line x1="45" y1="170" x2="45" y2="10" stroke="#D4AF6F" stroke-width="1.5"/>
+      <path d="M45 120 Q20 100 5 60 Q28 48 45 62Z" fill="#D4AF6F" opacity=".5"/>
+      <path d="M45 120 Q70 100 85 60 Q62 48 45 62Z" fill="#D4AF6F" opacity=".5"/>
+    </svg>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-5 pt-28 pb-20 grid lg:grid-cols-2 gap-14 items-center w-full">
+
+    <!-- ── Hero copy ── -->
+    <div class="text-white">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur border border-gold-300/30 px-4 py-1.5 rounded-full mb-7">
+        <span class="w-2 h-2 rounded-full bg-gold-300 animate-pulse"></span>
+        <span class="text-gold-300 text-[11px] font-bold tracking-[0.18em] uppercase">Terpercaya Sejak 2019</span>
+      </div>
+
+      <h1 class="font-display text-[2.6rem] md:text-5xl lg:text-[3.4rem] font-light leading-[1.1] mb-6">
+        Wujudkan <em class="text-gold-300 not-italic">Pernikahan</em><br>
+        Impian Tanpa<br>
+        <span class="font-semibold">Beban Biaya</span>
+      </h1>
+
+      <p class="text-white/75 text-lg leading-relaxed mb-9 max-w-md">
+        Paket Wedding & Lamaran Terlengkap & Terjangkau se-Jabodebek.
+        Sejak 2019 telah mendampingi ribuan calon pengantin mewujudkan hari paling bahagia mereka.
+      </p>
+
+      <!-- Stats -->
+      <div class="flex flex-wrap gap-6 mb-10">
+        <div>
+          <div class="font-display text-3xl font-semibold text-gold-300">2.000+</div>
+          <div class="text-white/55 text-xs mt-0.5">Pasangan Bahagia</div>
+        </div>
+        <div class="w-px bg-white/15"></div>
+        <div>
+          <div class="font-display text-3xl font-semibold text-gold-300">5 Tahun</div>
+          <div class="text-white/55 text-xs mt-0.5">Pengalaman</div>
+        </div>
+        <div class="w-px bg-white/15"></div>
+        <div>
+          <div class="font-display text-3xl font-semibold text-gold-300">4.9 ★</div>
+          <div class="text-white/55 text-xs mt-0.5">Rating Rata-rata</div>
+        </div>
+      </div>
+
+      <!-- CTA buttons -->
+      <div class="flex flex-wrap gap-4">
+        <a href="#paket"
+           class="bg-gold-300 hover:bg-gold-400 text-sage-700 font-bold px-8 py-4 rounded-full transition-all hover:shadow-xl hover:shadow-gold-300/30 hover:-translate-y-0.5 flex items-center gap-2 text-sm">
+          <!-- Calculator icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6"  x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+          Simulasi Harga
+        </a>
+        <a href="#konsultasi"
+           class="border border-white/45 hover:border-white text-white hover:bg-white/10 font-bold px-8 py-4 rounded-full transition-all backdrop-blur-sm flex items-center gap-2 text-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Konsultasi Gratis
+        </a>
+      </div>
+    </div>
+
+    <!-- ── Hero image collage ── -->
+    <div class="hidden lg:grid grid-cols-2 gap-4 relative">
+      <div class="flex flex-col gap-4">
+        <div class="rounded-2xl overflow-hidden h-56">
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=480&q=80"
+               alt="Dekorasi pernikahan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="rounded-2xl overflow-hidden h-40">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=480&q=80"
+               alt="Dekorasi lamaran" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+      <div class="flex flex-col gap-4 mt-8">
+        <div class="rounded-2xl overflow-hidden h-40">
+          <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=480&q=80"
+               alt="Intimate wedding" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+        <div class="rounded-2xl overflow-hidden h-56">
+          <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=480&q=80"
+               alt="Tenda pernikahan" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+        </div>
+      </div>
+
+      <!-- Floating price badge -->
+      <div class="absolute -bottom-5 -left-5 bg-white rounded-2xl shadow-xl px-5 py-4 flex items-center gap-3 z-10">
+        <div class="w-11 h-11 bg-gold-100 rounded-xl flex items-center justify-center text-xl">💍</div>
+        <div>
+          <div class="text-sage-500 text-xs">Mulai dari</div>
+          <div class="font-display text-xl text-gold-400 font-semibold leading-none mt-0.5">Rp 5 Juta</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/40">
+    <span class="text-[10px] tracking-[0.2em] uppercase">Scroll</span>
+    <div class="w-px h-8 bg-gradient-to-b from-white/40 to-transparent animate-pulse"></div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════════════════╗
+     ║  SECTION 2 – PRICE CALCULATOR                        ║
+     ╚══════════════════════════════════════════════════════╝ -->
+<section id="paket" class="py-24 bg-ivory-100">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <!-- Header -->
+    <div class="text-center mb-14 reveal">
+      <span class="inline-block text-gold-400 text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Paket & Harga</span>
+      <h2 class="font-display text-4xl md:text-5xl text-sage-700 mb-4">
+        Simulasi Harga <em class="text-gold-400 not-italic">Paket Anda</em>
+      </h2>
+      <p class="text-sage-500 max-w-md mx-auto text-sm leading-relaxed">
+        Pilih paket dasar, tambahkan layanan sesuai kebutuhan, dan lihat estimasi harga secara langsung.
+      </p>
+      <div class="mt-6 mx-auto w-14 h-0.5 bg-gold-300 rounded-full"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-8 items-start">
+
+      <!-- ── Left: Package selector + Add-ons ── -->
+      <div class="lg:col-span-3 reveal">
+
+        <!-- Step 1: Base Package -->
+        <h3 class="font-display text-2xl text-sage-700 mb-5 flex items-center gap-2.5">
+          <span class="w-7 h-7 rounded-full bg-gold-300/20 text-gold-400 text-xs font-bold flex items-center justify-center">1</span>
+          Pilih Paket Dasar
+        </h3>
+        <div id="pkg-list" class="space-y-3 mb-10">
+
+          <!-- Package cards are injected by JS -->
+
+        </div>
+
+        <!-- Step 2: Add-ons -->
+        <h3 class="font-display text-2xl text-sage-700 mb-5 flex items-center gap-2.5">
+          <span class="w-7 h-7 rounded-full bg-gold-300/20 text-gold-400 text-xs font-bold flex items-center justify-center">2</span>
+          Tambahan Layanan <span class="text-sage-400 text-base font-body font-normal">(opsional)</span>
+        </h3>
+        <div class="space-y-3" id="addon-list">
+          <!-- Add-on cards injected by JS -->
+        </div>
+      </div>
+
+      <!-- ── Right: Live Estimate Card ── -->
+      <div class="lg:col-span-2 reveal">
+        <div class="sticky top-28">
+          <div id="estimate-card" class="bg-white rounded-3xl shadow-xl p-8">
+
+            <!-- Card top -->
+            <div class="text-center mb-7">
+              <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gold-100 mb-3">
+                <span class="text-2xl">🌿</span>
+              </div>
+              <h3 class="font-display text-2xl text-sage-700">Estimasi Biaya</h3>
+              <p class="text-sage-400 text-xs mt-0.5">Diperbarui secara real-time</p>
+            </div>
+
+            <!-- Breakdown -->
+            <div class="space-y-2 text-sm mb-6">
+              <div class="flex justify-between items-center py-2 border-b border-ivory-200">
+                <span class="text-sage-500">Paket Dasar</span>
+                <span class="font-semibold text-sage-700" id="base-price-disp">Rp 5.000.000</span>
+              </div>
+              <div id="addon-breakdown" class="space-y-1.5">
+                <!-- Dynamic addon rows -->
+              </div>
+            </div>
+
+            <!-- Total box -->
+            <div class="bg-gradient-to-br from-sage-400 to-sage-700 rounded-2xl p-5 text-white text-center mb-5">
+              <div class="text-xs opacity-75 mb-1 tracking-wide uppercase">Estimasi Total Biaya</div>
+              <div class="font-display text-3xl font-semibold" id="total-price">Rp 5.000.000</div>
+              <div class="text-[10px] opacity-50 mt-1">*belum termasuk transportasi & pajak</div>
+            </div>
+
+            <!-- Selected package pill -->
+            <div class="bg-ivory-100 rounded-xl p-3 text-center mb-5">
+              <span class="text-xs text-sage-500">Paket dipilih: </span>
+              <span class="text-xs font-bold text-sage-700" id="chosen-pkg-name">Paket Lamaran</span>
+            </div>
+
+            <!-- CTA -->
+            <button onclick="bookNow()"
+              class="w-full bg-gold-300 hover:bg-gold-400 text-sage-700 font-bold py-4 rounded-2xl text-sm transition-all hover:shadow-lg hover:shadow-gold-300/30 hover:-translate-y-0.5">
+              🔒 Amankan Tanggal & Kuota Paket Ini
+            </button>
+            <p class="text-center text-[11px] text-sage-400 mt-3">Respon dalam &lt; 5 menit via WhatsApp</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════════════════╗
+     ║  SECTION 3 – PORTFOLIO GRID WITH FILTERS             ║
+     ╚══════════════════════════════════════════════════════╝ -->
+<section id="portofolio" class="py-24 bg-ivory-50">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <!-- Header -->
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block text-gold-400 text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Portofolio</span>
+      <h2 class="font-display text-4xl md:text-5xl text-sage-700 mb-4">
+        Karya <em class="text-gold-400 not-italic">Terbaik Kami</em>
+      </h2>
+      <p class="text-sage-500 max-w-md mx-auto text-sm leading-relaxed">
+        Setiap detail dirancang dengan cinta untuk momen paling berharga dalam hidup Anda.
+      </p>
+      <div class="mt-6 mx-auto w-14 h-0.5 bg-gold-300 rounded-full"></div>
+    </div>
+
+    <!-- Filter tabs -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10 reveal">
+      <button class="filter-btn active px-5 py-2 rounded-full text-sm font-semibold border-2 border-sage-300 text-sage-600" data-filter="all">Semua</button>
+      <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border-2 border-sage-300 text-sage-600" data-filter="lamaran">Lamaran</button>
+      <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border-2 border-sage-300 text-sage-600" data-filter="intimate">Intimate Wedding</button>
+      <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border-2 border-sage-300 text-sage-600" data-filter="tenda">Pernikahan Tenda</button>
+      <button class="filter-btn px-5 py-2 rounded-full text-sm font-semibold border-2 border-sage-300 text-sage-600" data-filter="gedung">Pernikahan Gedung</button>
+    </div>
+
+    <!-- Portfolio grid (populated by JS) -->
+    <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════════════════╗
+     ║  SECTION 4 – AVAILABILITY CHECKER                    ║
+     ╚══════════════════════════════════════════════════════╝ -->
+<section id="ketersediaan" class="py-24 bg-sage-700 relative overflow-hidden">
+
+  <!-- Subtle dot pattern -->
+  <div class="absolute inset-0 pointer-events-none opacity-[0.06]"
+       style="background-image:radial-gradient(circle, #fff 1px, transparent 1px); background-size:36px 36px;">
+  </div>
+
+  <!-- Botanical accents -->
+  <div class="absolute top-8 right-8 opacity-10 hidden lg:block pointer-events-none">
+    <svg width="110" height="180" viewBox="0 0 110 180" fill="none">
+      <path d="M55 170 Q30 135 12 100 Q35 80 55 100 Q75 80 98 100 Q80 135 55 170Z" fill="#D4AF6F"/>
+      <line x1="55" y1="170" x2="55" y2="10" stroke="#D4AF6F" stroke-width="1.5"/>
+    </svg>
+  </div>
+
+  <div class="max-w-3xl mx-auto px-5 relative">
+
+    <!-- Header -->
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block text-gold-300 text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Cek Ketersediaan</span>
+      <h2 class="font-display text-4xl md:text-5xl text-white mb-4">
+        Tanggal Anda <em class="text-gold-300 not-italic">Masih Tersedia?</em>
+      </h2>
+      <p class="text-white/65 max-w-md mx-auto text-sm leading-relaxed">
+        Slot kami terbatas tiap bulan. Cek segera sebelum tanggal impian diambil pasangan lain.
+      </p>
+    </div>
+
+    <!-- Checker form -->
+    <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 reveal">
+      <div class="grid md:grid-cols-2 gap-5 mb-5">
+        <div>
+          <label class="block text-white/80 text-sm font-semibold mb-2">📅 Rencana Tanggal</label>
+          <input type="date" id="chk-date"
+                 class="date-dark w-full bg-white/10 border border-white/30 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold-300 transition-colors placeholder-white/40">
+        </div>
+        <div>
+          <label class="block text-white/80 text-sm font-semibold mb-2">📍 Lokasi Acara</label>
+          <select id="chk-location"
+                  class="date-dark w-full bg-white/10 border border-white/30 text-white rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gold-300 transition-colors">
+            <option value=""        class="text-sage-700 bg-white">Pilih Kota</option>
+            <option value="Bekasi"  class="text-sage-700 bg-white">Bekasi</option>
+            <option value="Jakarta" class="text-sage-700 bg-white">Jakarta</option>
+            <option value="Depok"   class="text-sage-700 bg-white">Depok</option>
+            <option value="Bogor"   class="text-sage-700 bg-white">Bogor</option>
+            <option value="Tangerang" class="text-sage-700 bg-white">Tangerang</option>
+          </select>
+        </div>
+      </div>
+
+      <button onclick="checkAvailability()"
+        class="w-full bg-gold-300 hover:bg-gold-400 text-sage-700 font-bold py-4 rounded-xl text-sm transition-all hover:shadow-lg hover:-translate-y-0.5">
+        🔍 Cek Ketersediaan Sekarang
+      </button>
+
+      <!-- Result (shown after check) -->
+      <div id="avail-result" class="hidden mt-6 rounded-2xl p-5 border-2 border-gold-300 bg-gold-300/10">
+        <div class="flex items-start gap-3">
+          <span class="text-2xl leading-none mt-0.5">✅</span>
+          <div>
+            <h4 class="font-bold text-white mb-1">Slot Tersedia!</h4>
+            <p id="avail-message" class="text-white/80 text-sm leading-relaxed"></p>
+            <button onclick="document.getElementById('konsultasi').scrollIntoView({behavior:'smooth'})"
+              class="mt-3 bg-gold-300 hover:bg-gold-400 text-sage-700 font-bold px-5 py-2.5 rounded-xl text-sm transition-all">
+              🔒 Kunci Kuota Sekarang
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Peak-season note -->
+    <p class="text-center text-white/40 text-xs mt-5 reveal">
+      ⚠️ Tanggal peak season (Des–Feb &amp; Jun–Agu) biasanya penuh 3–6 bulan lebih awal.
+    </p>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════════════════╗
+     ║  SECTION 5 – TESTIMONIALS                            ║
+     ╚══════════════════════════════════════════════════════╝ -->
+<section id="testimoni" class="py-24 bg-ivory-100">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <!-- Header -->
+    <div class="text-center mb-14 reveal">
+      <span class="inline-block text-gold-400 text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Testimoni</span>
+      <h2 class="font-display text-4xl md:text-5xl text-sage-700 mb-4">
+        Kata <em class="text-gold-400 not-italic">Mereka</em>
+      </h2>
+      <p class="text-sage-500 max-w-md mx-auto text-sm leading-relaxed">
+        Ribuan pasangan telah mempercayakan momen spesial mereka kepada kami. Ini kisah bahagia mereka.
+      </p>
+      <div class="mt-6 mx-auto w-14 h-0.5 bg-gold-300 rounded-full"></div>
+    </div>
+
+    <!-- Grid (populated by JS) -->
+    <div id="testi-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 reveal"></div>
+
+    <!-- IG CTA -->
+    <div class="text-center mt-12 reveal">
+      <a href="https://www.instagram.com/dya.decoration" target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2.5 border-2 border-sage-400 text-sage-600 hover:bg-sage-400 hover:text-white px-8 py-3.5 rounded-full font-semibold text-sm transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        Lihat 500+ Review di Instagram @dya.decoration
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════════════════╗
+     ║  SECTION 6 – WHATSAPP CRM LEAD FORM                  ║
+     ╚══════════════════════════════════════════════════════╝ -->
+<section id="konsultasi" class="py-24 bg-ivory-50">
+  <div class="max-w-5xl mx-auto px-5">
+
+    <!-- Header -->
+    <div class="text-center mb-14 reveal">
+      <span class="inline-block text-gold-400 text-[11px] font-bold tracking-[0.2em] uppercase mb-3">Mulai Perjalanan Anda</span>
+      <h2 class="font-display text-4xl md:text-5xl text-sage-700 mb-4">
+        Hubungi Kami <em class="text-gold-400 not-italic">Sekarang</em>
+      </h2>
+      <p class="text-sage-500 max-w-md mx-auto text-sm leading-relaxed">
+        Isi formulir di bawah dan admin kami akan merespons via WhatsApp dalam kurang dari 5 menit.
+      </p>
+      <div class="mt-6 mx-auto w-14 h-0.5 bg-gold-300 rounded-full"></div>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-10 items-start">
+
+      <!-- ── Lead Form ── -->
+      <div class="lg:col-span-3 bg-white rounded-3xl shadow-xl p-8 border border-ivory-200 reveal">
+        <h3 class="font-display text-2xl text-sage-700 mb-7">Form Konsultasi Gratis</h3>
+
+        <div class="space-y-5">
+
+          <!-- Name -->
+          <div>
+            <label class="block text-sm font-bold text-sage-600 mb-1.5">Nama Lengkap *</label>
+            <input type="text" id="f-name" placeholder="Nama Anda"
+                   class="w-full border border-ivory-200 rounded-xl px-4 py-3 text-sm text-sage-700 focus:outline-none focus:border-sage-400 transition-colors placeholder-sage-300/70">
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label class="block text-sm font-bold text-sage-600 mb-1.5">Nomor WhatsApp *</label>
+            <div class="flex">
+              <span class="bg-ivory-100 border border-r-0 border-ivory-200 rounded-l-xl px-3 py-3 text-sage-500 text-sm font-semibold">+62</span>
+              <input type="tel" id="f-phone" placeholder="8xx-xxxx-xxxx"
+                     class="flex-1 border border-ivory-200 rounded-r-xl px-4 py-3 text-sm text-sage-700 focus:outline-none focus:border-sage-400 transition-colors placeholder-sage-300/70">
+            </div>
+          </div>
+
+          <!-- Date -->
+          <div>
+            <label class="block text-sm font-bold text-sage-600 mb-1.5">Rencana Tanggal Acara *</label>
+            <input type="date" id="f-date"
+                   class="w-full border border-ivory-200 rounded-xl px-4 py-3 text-sm text-sage-700 focus:outline-none focus:border-sage-400 transition-colors">
+          </div>
+
+          <!-- Location -->
+          <div>
+            <label class="block text-sm font-bold text-sage-600 mb-1.5">Lokasi Acara *</label>
+            <select id="f-location"
+                    class="w-full border border-ivory-200 rounded-xl px-4 py-3 text-sm text-sage-700 focus:outline-none focus:border-sage-400 transition-colors bg-white">
+              <option value="">Pilih Kota</option>
+              <option value="Bekasi">Bekasi</option>
+              <option value="Jakarta">Jakarta</option>
+              <option value="Depok">Depok</option>
+              <option value="Bogor">Bogor</option>
+              <option value="Tangerang">Tangerang</option>
+            </select>
+          </div>
+
+          <!-- Package -->
+          <div>
+            <label class="block text-sm font-bold text-sage-600 mb-1.5">Paket yang Diminati</label>
+            <select id="f-package"
+                    class="w-full border border-ivory-200 rounded-xl px-4 py-3 text-sm text-sage-700 focus:outline-none focus:border-sage-400 transition-colors bg-white">
+              <option value="Paket Lamaran">Paket Lamaran (Rp 5.000.000)</option>
+              <option value="Paket Intimate Wedding">Paket Intimate Wedding (Rp 12.000.000)</option>
+              <option value="Paket Lengkap Tenda + Catering">Paket Lengkap Tenda + Catering (Rp 25.000.000)</option>
+              <option value="Belum Tahu">Belum Tahu – Mau Konsultasi Dulu</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label class="block text-sm font-bold text-sage-600 mb-1.5">Ceritakan Impian Anda</label>
+            <textarea id="f-message" rows="3" placeholder="Tema, jumlah tamu, permintaan khusus..."
+                      class="w-full border border-ivory-200 rounded-xl px-4 py-3 text-sm text-sage-700 focus:outline-none focus:border-sage-400 transition-colors placeholder-sage-300/70 resize-none"></textarea>
+          </div>
+
+          <!-- Error display -->
+          <div id="f-error" class="hidden bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl px-4 py-3"></div>
+
+          <!-- Submit -->
+          <button onclick="submitLead()"
+            class="w-full bg-[#25D366] hover:bg-[#1db954] text-white font-bold py-4 rounded-2xl text-sm transition-all hover:shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2.5">
+            <!-- WhatsApp icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Kirim via WhatsApp Sekarang
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Trust panel ── -->
+      <div class="lg:col-span-2 space-y-6 reveal">
+
+        <!-- Why Us -->
+        <div class="bg-sage-700 rounded-3xl p-7 text-white">
+          <h3 class="font-display text-2xl text-gold-300 mb-6">Kenapa Pilih Kami?</h3>
+          <div class="space-y-5">
+            <div class="flex items-start gap-3.5">
+              <span class="text-xl mt-0.5">💰</span>
+              <div>
+                <div class="font-bold text-sm mb-0.5">Harga Transparan & Terjangkau</div>
+                <div class="text-white/65 text-xs leading-relaxed">Tidak ada biaya tersembunyi. Semua tertera jelas sejak awal konsultasi.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+              <span class="text-xl mt-0.5">🌿</span>
+              <div>
+                <div class="font-bold text-sm mb-0.5">Tim Profesional 5 Tahun</div>
+                <div class="text-white/65 text-xs leading-relaxed">2.000+ pernikahan sukses se-Jabodebek dengan hasil yang memukau.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+              <span class="text-xl mt-0.5">⚡</span>
+              <div>
+                <div class="font-bold text-sm mb-0.5">Respon Cepat & On-Time</div>
+                <div class="text-white/65 text-xs leading-relaxed">Admin aktif 07.00–22.00 WIB. Setup tepat waktu, dijamin.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3.5">
+              <span class="text-xl mt-0.5">🎨</span>
+              <div>
+                <div class="font-bold text-sm mb-0.5">Desain Custom Sesuai Tema</div>
+                <div class="text-white/65 text-xs leading-relaxed">Rustic, modern, tradisional, garden party — kami eksekusi sempurna.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct contact -->
+        <div class="bg-white rounded-3xl p-6 border border-ivory-200 shadow-sm">
+          <h4 class="font-display text-xl text-sage-700 mb-4">Atau Hubungi Langsung</h4>
+          <div class="space-y-3">
+            <a href="https://wa.me/6281234567890" target="_blank"
+               class="flex items-center gap-3 p-3 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366]/20 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <div>
+                <div class="text-sm font-bold text-sage-700">WhatsApp Admin</div>
+                <!-- ⚠️ REPLACE with actual number -->
+                <div class="text-xs text-sage-500">+62 812-3456-7890 · 07.00–22.00 WIB</div>
+              </div>
+            </a>
+            <a href="https://www.instagram.com/dya.decoration" target="_blank" rel="noopener"
+               class="flex items-center gap-3 p-3 rounded-xl bg-pink-50 hover:bg-pink-100 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <div>
+                <div class="text-sm font-bold text-sage-700">Instagram</div>
+                <div class="text-xs text-sage-500">@dya.decoration</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ╔══════════════════════════════════════════════════════╗
+     ║  FOOTER                                              ║
+     ╚══════════════════════════════════════════════════════╝ -->
+<footer class="bg-sage-700 text-white py-14">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+
+      <div>
+        <div class="font-display text-2xl font-semibold text-gold-300 mb-0.5">dya.decoration</div>
+        <div class="text-[10px] text-white/35 tracking-[0.2em] uppercase mb-4">Wedding Organizer</div>
+        <p class="text-white/55 text-sm leading-relaxed">
+          Mewujudkan pernikahan impian dengan sentuhan elegan dan harga bersahabat.
+          Melayani seluruh area Jabodebek sejak 2019.
+        </p>
+      </div>
+
+      <div>
+        <h5 class="font-bold text-gold-300 text-[11px] tracking-[0.15em] uppercase mb-4">Navigasi Cepat</h5>
+        <div class="space-y-2 text-sm">
+          <a href="#paket"        class="block text-white/55 hover:text-gold-300 transition-colors">Paket & Harga</a>
+          <a href="#portofolio"   class="block text-white/55 hover:text-gold-300 transition-colors">Portofolio</a>
+          <a href="#ketersediaan" class="block text-white/55 hover:text-gold-300 transition-colors">Cek Ketersediaan</a>
+          <a href="#testimoni"    class="block text-white/55 hover:text-gold-300 transition-colors">Testimoni</a>
+          <a href="#konsultasi"   class="block text-white/55 hover:text-gold-300 transition-colors">Konsultasi Gratis</a>
+        </div>
+      </div>
+
+      <div>
+        <h5 class="font-bold text-gold-300 text-[11px] tracking-[0.15em] uppercase mb-4">Area Layanan</h5>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-white/65">Bekasi</span>
+          <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-white/65">Jakarta</span>
+          <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-white/65">Depok</span>
+          <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-white/65">Bogor</span>
+          <span class="text-xs bg-white/10 px-3 py-1 rounded-full text-white/65">Tangerang</span>
+        </div>
+        <a href="https://www.instagram.com/dya.decoration" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-2 text-white/55 hover:text-white transition-colors text-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @dya.decoration
+        </a>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2 text-white/35 text-xs">
+      <span>© 2025 dya.decoration. All rights reserved.</span>
+      <span>Dibuat dengan ❤️ untuk calon pengantin Indonesia</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ╔══════════════════════════════════════════════════════╗
+     ║  FLOATING WHATSAPP BUTTON                            ║
+     ╚══════════════════════════════════════════════════════╝ -->
+<a id="wa-float" href="https://wa.me/6281234567890" target="_blank" rel="noopener"
+   class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-200 shadow-xl">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+
+<!-- ╔══════════════════════════════════════════════════════╗
+     ║  JAVASCRIPT                                          ║
+     ╚══════════════════════════════════════════════════════╝ -->
+<script>
+/* ============================================================
+   ⚠️  CONFIGURATION – replace with real values before launch
+   ============================================================ */
+const WA_NUMBER = '6281234567890';   // ← your WhatsApp number (no + or spaces)
+
+/* ============================================================
+   DATA DEFINITIONS
+   ============================================================ */
+
+// Base packages
+const PACKAGES = [
+  {
+    value: 5000000,
+    name: 'Paket Lamaran',
+    badge: '',
+    desc: 'Dekorasi lamaran lengkap, souvenir, dokumentasi dasar, dan koordinator hari H.',
+    tags: ['Dekorasi', 'Souvenir', 'Koordinator'],
+  },
+  {
+    value: 12000000,
+    name: 'Paket Intimate Wedding',
+    badge: 'TERPOPULER',
+    badgeColor: 'bg-gold-100 text-gold-500',
+    desc: 'Pernikahan intim ≤100 tamu. Dekorasi premium, catering 100 pax, MC, & dokumentasi.',
+    tags: ['Dekorasi Premium', 'Catering 100 pax', 'MC'],
+  },
+  {
+    value: 25000000,
+    name: 'Paket Lengkap Tenda + Catering',
+    badge: 'BEST VALUE',
+    badgeColor: 'bg-sage-100 text-sage-500',
+    desc: 'Paket terlengkap: tenda, dekorasi ballroom, catering 300 pax, entertainment, & full dokumentasi.',
+    tags: ['Tenda Standar', 'Catering 300 pax', 'Entertainment', 'Foto & Video'],
+  },
+];
+
+// Add-ons
+const ADDONS = [
+  { id: 'catering', label: 'Tambahan Catering',       note: 'Rp 50.000 / pax', price: null, perPax: true },
+  { id: 'tenda',    label: 'Upgrade Tenda VIP',        note: 'Tenda eksklusif dengan pencahayaan premium & dekorasi tiang', price: 3000000 },
+  { id: 'mc',       label: 'MC & Entertainment',       note: 'MC profesional + live musik / sound system premium', price: 2500000 },
+  { id: 'foto',     label: 'Dokumentasi Foto & Video', note: 'Full day photo + cinematic video highlight + album cetak', price: 2000000 },
+];
+
+// Portfolio items
+const PORTFOLIO = [
+  { cat:'lamaran',  title:'Lamaran Nuansa Sage',         loc:'Bekasi Timur',    img:'https://images.unsplash.com/photo-1491797780451-d0cd3e0a4e4a?w=500&q=80' },
+  { cat:'lamaran',  title:'Lamaran Boho Rustic',          loc:'Depok',           img:'https://images.unsplash.com/photo-1510076857177-7470076d4098?w=500&q=80' },
+  { cat:'lamaran',  title:'Lamaran Floral Fantasy',       loc:'Jakarta Selatan', img:'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=500&q=80' },
+  { cat:'intimate', title:'Intimate Wedding Modern',      loc:'Jakarta Selatan', img:'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500&q=80' },
+  { cat:'intimate', title:'Intimate Garden Party',        loc:'Bogor',           img:'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500&q=80' },
+  { cat:'tenda',    title:'Pernikahan Tenda Premium',     loc:'Bekasi Barat',    img:'https://images.unsplash.com/photo-1519741347686-c1e0aadf4611?w=500&q=80' },
+  { cat:'tenda',    title:'Tenda VIP Nuansa Gold',        loc:'Tangerang',       img:'https://images.unsplash.com/photo-1478146059778-26028b07395a?w=500&q=80' },
+  { cat:'gedung',   title:'Wedding Gedung Mewah',         loc:'Jakarta Pusat',   img:'https://images.unsplash.com/photo-1561575748-60db5f7be8f8?w=500&q=80' },
+  { cat:'gedung',   title:'Ballroom Elegant White',       loc:'Bekasi',          img:'https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=500&q=80' },
+];
+
+// Testimonials
+const TESTIMONI = [
+  { name:'Siti Rahmawati & Budi Santoso', loc:'Bekasi Timur', pkg:'Intimate Wedding',
+    text:'Alhamdulillah, pernikahan kami berjalan sangat lancar dan indah melebihi ekspektasi. Tim Dya Decoration sangat profesional dan responsif. Decornya cantik banget, banyak tamu yang tanya vendor siapa!', date:'Maret 2025' },
+  { name:'Annisa Putri & Rizky Fadhilah', loc:'Depok', pkg:'Paket Lengkap Tenda',
+    text:'Dengan budget yang kami punya, kami tidak menyangka bisa mendapatkan dekorasi sepremium ini. Tim kerjanya rapi dan on-time. MC-nya juga keren banget bisa bikin suasana hidup. Worth every rupiah!', date:'Februari 2025' },
+  { name:'Dian Permata & Hendra Wijaya', loc:'Jakarta Selatan', pkg:'Paket Lamaran',
+    text:'Lamaran kami jadi sangat berkesan berkat Dya Decoration! Dekorasi bunga dan backdrop-nya cantik banget, foto juga jadi aesthetic. Harganya sangat reasonable, jauh lebih murah dari vendor lain tapi kualitasnya ga kalah.', date:'April 2025' },
+  { name:'Nurul Hidayah & Ahmad Fauzi', loc:'Bekasi Barat', pkg:'Intimate Wedding',
+    text:'Kami sempat khawatir budget terbatas tidak bisa menggelar pernikahan yang cantik. Ternyata salah besar! Dya Decoration bisa mewujudkan impian kami. Keluarga dan tamu puas semua, banyak yang minta kontaknya.', date:'Januari 2025' },
+  { name:'Yuliana Sari & Teguh Prasetyo', loc:'Bogor', pkg:'Paket Lengkap Tenda',
+    text:'Mulai dari koordinator, dekorasi, catering sampai dokumentasi semuanya dikerjakan dengan sangat baik. Ada satu kata: MEMUASKAN. Harga terjangkau tapi pelayanan bintang lima. Pasti rekomendasikan ke semua kerabat!', date:'Maret 2025' },
+  { name:'Fitriani & Bagas Kusuma', loc:'Tangerang', pkg:'Paket Lamaran',
+    text:'Tim Dya sangat membantu dari awal konsultasi sampai hari H. Responsnya cepat, sabar menjawab pertanyaan kami. Hasil dekorasinya melebihi ekspektasi, apalagi dengan harga yang sangat ramah di kantong!', date:'April 2025' },
+];
+
+
+/* ============================================================
+   GLOBAL STATE
+   ============================================================ */
+let currentTotal   = PACKAGES[0].value;
+let currentPkgName = PACKAGES[0].name;
+
+
+/* ============================================================
+   UTILITY: Format Rupiah
+   ============================================================ */
+function rupiah(n) {
+  return 'Rp ' + n.toLocaleString('id-ID');
+}
+
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+const navbar   = document.getElementById('navbar');
+const hamBtn   = document.getElementById('ham-btn');
+const hamOpen  = document.getElementById('ham-open');
+const hamClose = document.getElementById('ham-close');
+const mobileNav = document.getElementById('mobile-nav');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+hamBtn.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('hidden');
+  hamOpen.classList.toggle('hidden', !open);
+  hamClose.classList.toggle('hidden', open);
+});
+
+function closeNav() {
+  mobileNav.classList.add('hidden');
+  hamOpen.classList.remove('hidden');
+  hamClose.classList.add('hidden');
+}
+
+
+/* ============================================================
+   SECTION 2: BUILD & MANAGE PRICE CALCULATOR
+   ============================================================ */
+
+// ── Render base package cards ──
+function renderPackages() {
+  const list = document.getElementById('pkg-list');
+  list.innerHTML = '';
+
+  PACKAGES.forEach((pkg, idx) => {
+    const tagsHTML = pkg.tags.map(t =>
+      `<span class="text-[10px] bg-sage-50 text-sage-500 px-2 py-0.5 rounded-full border border-sage-200">${t}</span>`
+    ).join('');
+
+    const badgeHTML = pkg.badge
+      ? `<span class="ml-1.5 text-[10px] ${pkg.badgeColor} px-2 py-0.5 rounded-full font-bold">${pkg.badge}</span>`
+      : '';
+
+    const div = document.createElement('label');
+    div.className = 'pkg-card' + (idx === 0 ? ' chosen' : '') +
+      ' flex items-start gap-4 p-5 bg-white rounded-2xl cursor-pointer shadow-sm';
+    div.setAttribute('for', 'pkg-' + idx);
+
+    div.innerHTML = `
+      <input type="radio" id="pkg-${idx}" name="base-pkg" value="${pkg.value}"
+             data-name="${pkg.name}" class="mt-1 w-4 h-4 accent-sage-400 shrink-0"
+             ${idx === 0 ? 'checked' : ''} onchange="onPackageChange()">
+      <div class="flex-1 min-w-0">
+        <div class="flex flex-wrap justify-between items-start gap-1 mb-0.5">
+          <div class="flex items-center flex-wrap gap-x-1">
+            <span class="font-bold text-sage-700 text-sm">${pkg.name}</span>${badgeHTML}
+          </div>
+          <span class="font-display text-lg text-gold-400 font-semibold shrink-0">${rupiah(pkg.value)}</span>
+        </div>
+        <p class="text-xs text-sage-500 leading-relaxed mt-1 mb-2">${pkg.desc}</p>
+        <div class="flex flex-wrap gap-1.5">${tagsHTML}</div>
+      </div>`;
+
+    list.appendChild(div);
+  });
+}
+
+// ── Render add-on cards ──
+function renderAddons() {
+  const list = document.getElementById('addon-list');
+  list.innerHTML = '';
+
+  ADDONS.forEach(a => {
+    const priceLabel = a.perPax ? '+Rp 50.000/pax' : '+' + rupiah(a.price);
+    const paxControls = a.perPax ? `
+      <div id="pax-wrapper" class="hidden mt-3">
+        <label class="text-xs text-sage-500 mb-1.5 block">Jumlah pax tambahan:</label>
+        <div class="flex items-center gap-3">
+          <button type="button" onclick="changePax(-50)"
+            class="w-8 h-8 rounded-full bg-sage-100 hover:bg-sage-200 text-sage-700 font-bold text-base flex items-center justify-center transition-colors">−</button>
+          <input type="number" id="pax-input" value="50" min="50" step="50"
+            class="w-20 text-center border border-ivory-200 rounded-xl py-1.5 text-sm text-sage-700 focus:outline-none focus:border-sage-400"
+            onchange="updateCalc()">
+          <button type="button" onclick="changePax(50)"
+            class="w-8 h-8 rounded-full bg-sage-100 hover:bg-sage-200 text-sage-700 font-bold text-base flex items-center justify-center transition-colors">+</button>
+          <span class="text-xs text-sage-400">pax</span>
+        </div>
+      </div>` : '';
+
+    const div = document.createElement('div');
+    div.className = 'bg-white rounded-2xl p-5 shadow-sm border border-ivory-200';
+    div.innerHTML = `
+      <div class="flex items-start gap-3">
+        <input type="checkbox" id="chk-${a.id}" class="mt-1 w-4 h-4 accent-sage-400 shrink-0 cursor-pointer"
+               onchange="onAddonChange('${a.id}')">
+        <div class="flex-1">
+          <label for="chk-${a.id}" class="flex justify-between items-start cursor-pointer">
+            <div>
+              <span class="font-bold text-sage-700 text-sm">${a.label}</span>
+              <span class="block text-xs text-sage-400 mt-0.5 leading-relaxed">${a.note}</span>
+            </div>
+            <span class="text-gold-400 font-bold text-sm shrink-0 ml-4">${priceLabel}</span>
+          </label>
+          ${paxControls}
+        </div>
+      </div>`;
+
+    list.appendChild(div);
+  });
+}
+
+// ── Handle package radio change ──
+function onPackageChange() {
+  // Update card border styling
+  document.querySelectorAll('.pkg-card').forEach(card => {
+    const radio = card.querySelector('input[type=radio]');
+    card.classList.toggle('chosen', radio.checked);
+  });
+  updateCalc();
+}
+
+// ── Handle add-on checkbox change ──
+function onAddonChange(id) {
+  if (id === 'catering') {
+    const wrapper = document.getElementById('pax-wrapper');
+    if (wrapper) wrapper.classList.toggle('hidden', !document.getElementById('chk-catering').checked);
+  }
+  updateCalc();
+}
+
+// ── Change catering pax count ──
+function changePax(delta) {
+  const inp = document.getElementById('pax-input');
+  inp.value = Math.max(50, (parseInt(inp.value) || 50) + delta);
+  updateCalc();
+}
+
+// ── Main calculator logic ──
+function updateCalc() {
+  // 1. Base price
+  const selectedRadio = document.querySelector('input[name="base-pkg"]:checked');
+  if (!selectedRadio) return;
+  const base = parseInt(selectedRadio.value);
+  currentPkgName = selectedRadio.dataset.name;
+
+  document.getElementById('base-price-disp').textContent = rupiah(base);
+  document.getElementById('chosen-pkg-name').textContent = currentPkgName;
+
+  // 2. Add-ons
+  let addonsTotal = 0;
+  let breakdownHTML = '';
+
+  ADDONS.forEach(a => {
+    const chk = document.getElementById('chk-' + a.id);
+    if (!chk || !chk.checked) return;
+
+    if (a.perPax) {
+      const pax = parseInt(document.getElementById('pax-input').value) || 50;
+      const sub = pax * 50000;
+      addonsTotal += sub;
+      breakdownHTML += `<div class="flex justify-between items-center py-1 text-xs text-sage-500">
+        <span>Catering tambahan (${pax} pax × Rp 50.000)</span>
+        <span class="font-semibold text-sage-600">+${rupiah(sub)}</span>
+      </div>`;
+    } else {
+      addonsTotal += a.price;
+      breakdownHTML += `<div class="flex justify-between items-center py-1 text-xs text-sage-500">
+        <span>${a.label}</span>
+        <span class="font-semibold text-sage-600">+${rupiah(a.price)}</span>
+      </div>`;
+    }
+  });
+
+  document.getElementById('addon-breakdown').innerHTML = breakdownHTML;
+
+  // 3. Total + animate card
+  currentTotal = base + addonsTotal;
+  document.getElementById('total-price').textContent = rupiah(currentTotal);
+
+  const card = document.getElementById('estimate-card');
+  card.classList.remove('pulsing');
+  void card.offsetWidth; // force reflow to restart animation
+  card.classList.add('pulsing');
+
+  // 4. Sync lead-form package dropdown
+  const sel = document.getElementById('f-package');
+  if (sel) {
+    for (let i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === currentPkgName) { sel.selectedIndex = i; break; }
+    }
+  }
+}
+
+// ── "Amankan Tanggal" button in calculator ──
+function bookNow() {
+  // Sync dropdown then scroll to form
+  const sel = document.getElementById('f-package');
+  if (sel) {
+    for (let i = 0; i < sel.options.length; i++) {
+      if (sel.options[i].value === currentPkgName) { sel.selectedIndex = i; break; }
+    }
+  }
+  document.getElementById('konsultasi').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Init calculator ──
+renderPackages();
+renderAddons();
+updateCalc(); // Set initial estimate
+
+
+/* ============================================================
+   SECTION 3: PORTFOLIO FILTER
+   ============================================================ */
+function renderPortfolio(filter) {
+  const grid = document.getElementById('portfolio-grid');
+  grid.innerHTML = '';
+
+  const items = filter === 'all' ? PORTFOLIO : PORTFOLIO.filter(p => p.cat === filter);
+
+  items.forEach((item, idx) => {
+    const div = document.createElement('div');
+    div.className = 'port-item rounded-2xl overflow-hidden shadow-md group cursor-pointer bg-white';
+    div.style.cssText = 'opacity:0;transform:translateY(18px)';
+    div.innerHTML = `
+      <div class="overflow-hidden h-56 bg-ivory-200">
+        <img src="${item.img}" alt="${item.title}" loading="lazy"
+             class="port-thumb w-full h-full object-cover">
+      </div>
+      <div class="p-4 flex items-center justify-between">
+        <div>
+          <h4 class="font-semibold text-sage-700 text-sm">${item.title}</h4>
+          <p class="text-sage-400 text-xs mt-0.5 flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${item.loc}
+          </p>
+        </div>
+        <span class="text-xs bg-ivory-100 text-sage-500 px-2.5 py-1 rounded-full capitalize">${item.cat}</span>
+      </div>`;
+
+    grid.appendChild(div);
+
+    // Staggered entrance animation
+    setTimeout(() => {
+      div.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+      div.style.opacity    = '1';
+      div.style.transform  = 'translateY(0)';
+    }, idx * 75);
+  });
+}
+
+// Attach filter button events
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPortfolio(btn.dataset.filter);
+  });
+});
+
+renderPortfolio('all'); // Initial render
+
+
+/* ============================================================
+   SECTION 4: AVAILABILITY CHECKER
+   ============================================================ */
+function checkAvailability() {
+  const dateVal = document.getElementById('chk-date').value;
+  const locVal  = document.getElementById('chk-location').value;
+
+  if (!dateVal) { alert('Mohon pilih tanggal pernikahan terlebih dahulu.'); return; }
+  if (!locVal)  { alert('Mohon pilih kota / lokasi acara terlebih dahulu.'); return; }
+
+  const formatted = new Date(dateVal).toLocaleDateString('id-ID', {
+    weekday:'long', day:'numeric', month:'long', year:'numeric'
+  });
+
+  const resultDiv = document.getElementById('avail-result');
+  document.getElementById('avail-message').textContent =
+    `Tanggal ${formatted} untuk area ${locVal} masih tersedia! ` +
+    `Kuota tersisa terbatas bulan ini — amankan slot Anda sekarang sebelum diambil pasangan lain.`;
+
+  resultDiv.classList.remove('hidden');
+  resultDiv.scrollIntoView({ behavior:'smooth', block:'nearest' });
+
+  // Pre-fill lead form
+  document.getElementById('f-date').value     = dateVal;
+  document.getElementById('f-location').value = locVal;
+}
+
+
+/* ============================================================
+   SECTION 5: TESTIMONIALS
+   ============================================================ */
+function renderTestimonials() {
+  const grid = document.getElementById('testi-grid');
+  TESTIMONI.forEach(t => {
+    const initials = t.name.charAt(0).toUpperCase();
+    const card = document.createElement('div');
+    card.className = 'testi-card bg-white rounded-2xl p-6 shadow-sm border border-ivory-200';
+    card.innerHTML = `
+      <div class="flex justify-between items-start mb-4">
+        <div class="text-gold-300 text-base tracking-widest">★★★★★</div>
+        <span class="text-[10px] text-sage-500 bg-ivory-100 px-2.5 py-0.5 rounded-full ml-2 shrink-0">${t.pkg}</span>
+      </div>
+      <p class="text-sage-600 text-sm leading-relaxed mb-5 italic">"${t.text}"</p>
+      <div class="flex items-center gap-3 pt-4 border-t border-ivory-200">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sage-300 to-sage-500 flex items-center justify-center text-white font-display text-xl font-semibold shrink-0">
+          ${initials}
+        </div>
+        <div class="min-w-0">
+          <div class="font-bold text-sage-700 text-sm truncate">${t.name}</div>
+          <div class="text-sage-400 text-xs flex items-center gap-1 mt-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            ${t.loc} · ${t.date}
+          </div>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+renderTestimonials();
+
+
+/* ============================================================
+   SECTION 6: WHATSAPP CRM FORM
+   ============================================================ */
+
+// Strip HTML-dangerous characters (XSS prevention)
+function sanitize(str) {
+  return str.replace(/[<>"'`&]/g, '').trim();
+}
+
+function formatDateID(dateStr) {
+  if (!dateStr) return 'Belum ditentukan';
+  return new Date(dateStr).toLocaleDateString('id-ID', {
+    weekday:'long', day:'numeric', month:'long', year:'numeric'
+  });
+}
+
+function showError(msg) {
+  const el = document.getElementById('f-error');
+  el.textContent = msg;
+  el.classList.remove('hidden');
+  el.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+function submitLead() {
+  // Collect & sanitize
+  const name    = sanitize(document.getElementById('f-name').value);
+  const phone   = sanitize(document.getElementById('f-phone').value.replace(/\D/g, ''));
+  const date    = document.getElementById('f-date').value;
+  const loc     = document.getElementById('f-location').value;
+  const pkg     = document.getElementById('f-package').value;
+  const msg     = sanitize(document.getElementById('f-message').value);
+  const errEl   = document.getElementById('f-error');
+
+  // Hide previous error
+  errEl.classList.add('hidden');
+
+  // Validation
+  if (!name)          { showError('Mohon masukkan nama lengkap Anda.'); return; }
+  if (phone.length < 9) { showError('Mohon masukkan nomor WhatsApp yang valid (min. 9 digit).'); return; }
+  if (!date)          { showError('Mohon pilih rencana tanggal acara.'); return; }
+  if (!loc)           { showError('Mohon pilih lokasi / kota acara.'); return; }
+
+  // Build WhatsApp message template
+  const formattedDate = formatDateID(date);
+  const estimasi      = rupiah(currentTotal);
+
+  const waText = [
+    `Halo Admin Dya Decoration! 👋`,
+    ``,
+    `Saya *${name}* tertarik dengan *${pkg}* untuk tanggal *${formattedDate}* di area *${loc}*.`,
+    ``,
+    `Saya sudah mencoba simulasi harga di website dengan *estimasi total ${estimasi}*.`,
+    msg ? `\nPesan tambahan: ${msg}` : ``,
+    ``,
+    `Mohon informasi lebih lanjut ya. Terima kasih! 🌿`,
+  ].join('\n');
+
+  // Build URL and open WhatsApp
+  const waUrl = `https://api.whatsapp.com/send?phone=${WA_NUMBER}&text=${encodeURIComponent(waText)}`;
+  window.open(waUrl, '_blank');
+}
+
+
+/* ============================================================
+   SCROLL REVEAL OBSERVER
+   ============================================================ */
+const revealObserver = new IntersectionObserver(
+  (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+);
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+/* ============================================================
+   MIN DATE: prevent past dates in all date pickers
+   ============================================================ */
+const todayISO = new Date().toISOString().split('T')[0];
+['chk-date', 'f-date'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.min = todayISO;
+});
+
+</script>
+</body>
+</html>
